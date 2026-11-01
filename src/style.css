@@ -1,7 +1,7 @@
 html {
   background: #ddd;
   color: #555;
-  font: 100%/1.4 'Times';
+  font: 100%/1.4 "Times";
 }
 
 body {
@@ -15,7 +15,7 @@ body {
 main {
   word-spacing: 0.8em;
   font-size: var(--base-size);
-  
+
   .js & {
     margin-bottom: 110vh;
   }
@@ -32,8 +32,7 @@ p {
   }
 }
 
-svg {
-  max-width: 100%;
+canvas {
   position: absolute;
   inset: 0;
   z-index: -1;
