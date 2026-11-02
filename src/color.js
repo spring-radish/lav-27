@@ -1,13 +1,14 @@
 import * as d3 from "d3";
 
-export function makeColorScheme(sortedData) {
+export function makeColorScheme(sortedData, column) {
   return d3
     .scaleLinear()
-    .domain(sortedData.map((d) => d.song_share))
+    .domain(sortedData.map((d) => d[column]))
     .range(
       d3
         .quantize(
-          (t) => d3.interpolateCubehelixDefault(t * 0.95),
+          // d3.interpolateCubehelixDefault,
+          d3.interpolateCubehelixLong.gamma(0.5)("#a54886", "#fdfefc"),
           sortedData.length,
         )
         .reverse(),

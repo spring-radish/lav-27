@@ -1,0 +1,102 @@
+[
+  {
+    "song_id": 378,
+    "title": "Return Again",
+    "lesson_count": 40,
+    "song_share": "0.0104166666666667",
+    "global_song_share": "0.00563205834103639",
+    "delta": "0.00478460832563028",
+    "max_delta": "0.00703485509735076",
+    "delta_normed": "0.680128909468527"
+  },
+  {
+    "song_id": 151,
+    "title": "Green Fields",
+    "lesson_count": 36,
+    "song_share": "0.009375",
+    "global_song_share": "0.00234014490264924",
+    "delta": "0.00703485509735076",
+    "max_delta": "0.00703485509735076",
+    "delta_normed": "1.0"
+  },
+  {
+    "song_id": 505,
+    "title": "Raymond",
+    "lesson_count": 36,
+    "song_share": "0.009375",
+    "global_song_share": "0.00315490261270511",
+    "delta": "0.00622009738729489",
+    "max_delta": "0.00703485509735076",
+    "delta_normed": "0.884182730307737"
+  },
+  {
+    "song_id": 529,
+    "title": "Sardis",
+    "lesson_count": 36,
+    "song_share": "0.009375",
+    "global_song_share": "0.0044080949649435",
+    "delta": "0.0049669050350565",
+    "max_delta": "0.00703485509735076",
+    "delta_normed": "0.706042266162238"
+  },
+  {
+    "song_id": 305,
+    "title": "The Golden Harp",
+    "lesson_count": 36,
+    "song_share": "0.009375",
+    "global_song_share": "0.0044354971300799",
+    "delta": "0.0049395028699201",
+    "max_delta": "0.00703485509735076",
+    "delta_normed": "0.702147066508911"
+  },
+  {
+    "song_id": 82,
+    "title": "I Would See Jesus",
+    "lesson_count": 35,
+    "song_share": "0.00911458333333333",
+    "global_song_share": "0.0028297302530864",
+    "delta": "0.00628485308024694",
+    "max_delta": "0.00703485509735076",
+    "delta_normed": "0.893387709238494"
+  },
+  {
+    "song_id": 350,
+    "title": "Concord",
+    "lesson_count": 34,
+    "song_share": "0.00885416666666667",
+    "global_song_share": "0.00282424982005912",
+    "delta": "0.00602991684660755",
+    "max_delta": "0.00703485509735076",
+    "delta_normed": "0.857148692213766"
+  },
+  {
+    "song_id": 27,
+    "title": "Sharpsburg",
+    "lesson_count": 32,
+    "song_share": "0.00833333333333333",
+    "global_song_share": "0.00308913741637773",
+    "delta": "0.00524419591695561",
+    "max_delta": "0.00703485509735076",
+    "delta_normed": "0.745458981654151"
+  },
+  {
+    "song_id": 458,
+    "title": "The Marcellas",
+    "lesson_count": 31,
+    "song_share": "0.00807291666666667",
+    "global_song_share": "0.00185603998523937",
+    "delta": "0.0062168766814273",
+    "max_delta": "0.00703485509735076",
+    "delta_normed": "0.883724909098483"
+  },
+  {
+    "song_id": 319,
+    "title": "Arnold",
+    "lesson_count": 27,
+    "song_share": "0.00703125",
+    "global_song_share": "0.00212092758155798",
+    "delta": "0.00491032241844202",
+    "max_delta": "0.00703485509735076",
+    "delta_normed": "0.697999084628081"
+  }
+]

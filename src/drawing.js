@@ -3,57 +3,78 @@ import * as Elements from "./elements.js";
 import * as Measurements from "./measurements";
 import * as Color from "./color";
 
-const dpi = window.devicePixelRatio || 1;
-const column = (x) => Number(x.song_share);
-const key = (x) => Number(x.song_id);
+export function prepScales(data) {
+  const radiusScale = d3.scalePow(
+    d3.extent(data.map(({ song_share }) => song_share)),
+    [Measurements.rem / 2, Measurements.radius * 1.5],
+  );
 
-export function resizeCanvas(canvas) {
-  canvas.setAttribute("width", document.body.clientWidth * dpi);
-  canvas.setAttribute("height", document.body.clientHeight * dpi);
+  const globeColor = Color.makeColorScheme(
+    data.sort((a, b) => b.global_song_share - a.global_song_share),
+    "global_song_share",
+  );
+  const localColor = Color.makeColorScheme(
+    data.sort((a, b) => b.song_share - a.song_share),
+    "song_share",
+  );
+
+  return {
+    radiusScale,
+    globeColor,
+    localColor,
+  };
 }
 
-export function drawDots(canvas, data, positions) {
-  const radiusScale = d3.scaleRadial(
-    [0, d3.max(data.map((d) => column(d)))],
-    [0, Measurements.radius],
-  );
-  const globalColor = Color.makeColorScheme(
-    data.sort((a, b) => column(b) - column(a)),
-  );
-
+export function prepNodes(data, positions, { radiusScale }) {
   const nodes = data
-    .sort((a, b) => column(b) - column(a))
+    .sort((a, b) => b.delta_geo_sq - a.delta_geo_sq) // sorted by geometric delta squared
     .slice(0, positions.length)
+    // .reverse()
     .map((d, i) => {
-      const radius = radiusScale(column(d));
+      const radius = radiusScale(d.song_share); // sized by local popularity
       const position = positions.at(i);
       return {
         r: radius,
         x: position.cx,
         y: position.cy,
+        vx: 0,
+        vy: 0,
         ...d,
       };
     });
 
-  nodes.forEach((n) => drawDot(canvas, n));
+  return nodes;
+}
 
-  console.log(nodes);
+export function drawDots(canvas, { globeColor, localColor }, nodes) {
+  const context = canvas.getContext("2d");
+  // context.save();
+  context.clearRect(0, 0, canvas.width, canvas.height);
 
-  function drawDot(canvas, d) {
-    console.log(d);
-    const context = canvas.getContext("2d");
-    // context.scale(dpi, dpi);
+  nodes.forEach(drawDot);
 
-    const gradient = context.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r);
-    gradient.addColorStop(0.2, "white");
-    gradient.addColorStop(0.9, globalColor(column(d)));
+  function drawDot(d) {
+    const scaledX = d.x * Measurements.dpi;
+    const scaledY = d.y * Measurements.dpi;
+    const scaledR = d.r * Measurements.dpi;
+
+    const gradient = context.createRadialGradient(
+      scaledX,
+      scaledY,
+      0,
+      scaledX,
+      scaledY,
+      scaledR,
+    );
+    gradient.addColorStop(0.1, globeColor(d.global_song_share));
+    gradient.addColorStop(0.9, localColor(d.song_share));
 
     // context.translate(canvas.width / 2, canvas.height / 2);
     context.beginPath();
-    context.moveTo(d.x, d.y);
+    context.moveTo(scaledX, scaledY);
     // context.font = "20px black system-ui"
     // context.fillText(Math.round(Math.atan(d.y / d.x) * 100), d.x, d.y)
-    context.arc(d.x, d.y, d.r, 0, 2 * Math.PI);
+    context.arc(scaledX, scaledY, scaledR, 0, 2 * Math.PI);
     context.fillStyle = gradient;
     context.fill();
   }

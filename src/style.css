@@ -1,6 +1,12 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
-  background: #ddd;
-  color: #555;
+  background: linear-gradient(#e8e8ee calc(100% - 100vh), #cdc7e1);
+  color: #55536e;
   font: 100%/1.4 "Times";
 }
 
@@ -15,10 +21,6 @@ body {
 main {
   word-spacing: 0.8em;
   font-size: var(--base-size);
-
-  .js & {
-    margin-bottom: 110vh;
-  }
 }
 
 h1,
@@ -36,10 +38,90 @@ canvas {
   position: absolute;
   inset: 0;
   z-index: -1;
+  width: 100vw;
+  height: auto;
 }
 
 d-o-t {
   height: 1rem;
   width: 0;
   vertical-align: center;
+}
+
+footer {
+  font-size: calc(2 / 3 * var(--base-size));
+  height: max(100vh, 50vw);
+  font-style: italic;
+  text-align: center;
+  text-wrap: balance;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1lh;
+
+  body:not(.js) & {
+    background: radial-gradient(
+      circle closest-side,
+      transparent 70%,
+      white 90%,
+      transparent 90%
+    );
+  }
+}
+
+input {
+  appearance: none;
+  font: inherit;
+  padding: 0.1em 0.4em;
+  border-radius: 0;
+  border: 1px solid white;
+  background: transparent;
+  color: inherit;
+
+  &:hover {
+    background: #fff4;
+  }
+  &:focus {
+    background: #fff8;
+  }
+}
+
+input::placeholder {
+  opacity: 0.8;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+}
+
+#tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #e8e8eedd;
+  background: #f1f1fade;
+  backdrop-filter: blur(0.2em);
+  border: 1px solid white;
+  padding: 0.5em;
+  line-height: 1.2;
+
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 0 0.5em;
+
+  span {
+    text-align: right;
+  }
+  label {
+    display: flex;
+    gap: inherit;
+    &::after {
+      content: "";
+      display: block;
+      border-bottom: 1px solid #cdc7e1;
+      flex: 1 1 100%;
+      translate: 0 -50%;
+    }
+  }
 }

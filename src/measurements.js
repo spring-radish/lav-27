@@ -4,12 +4,19 @@ export const rem = measureProperty(Elements.body, "font-size");
 export const em = measureProperty(Elements.main, "font-size");
 export const radius = (2 / 3) * measureProperty(Elements.main, "word-spacing");
 
+export const dpi = window.devicePixelRatio || 1;
+
 function measureProperty(element, property) {
   const stringValue = window
     .getComputedStyle(element)
     .getPropertyValue(property);
   const numberValue = Number(stringValue.replace("px", ""));
   return numberValue;
+}
+
+export function resizeCanvas(canvas) {
+  canvas.setAttribute("width", document.body.clientWidth * dpi);
+  canvas.setAttribute("height", document.body.clientHeight * dpi);
 }
 
 export function locateSpaces(element, margin) {
