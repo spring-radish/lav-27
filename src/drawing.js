@@ -6,7 +6,7 @@ import * as Color from "./color";
 export function prepScales(data) {
   const radiusScale = d3.scalePow(
     d3.extent(data.map(({ song_share }) => song_share)),
-    [Measurements.rem / 2, Measurements.radius * 1.5],
+    [Measurements.rem, Measurements.radius * 1.4],
   );
 
   const globeColor = Color.makeColorScheme(
@@ -26,9 +26,11 @@ export function prepScales(data) {
 }
 
 export function prepNodes(data, positions, { radiusScale }) {
+  positions = d3.shuffle(positions);
   const nodes = data
-    .sort((a, b) => b.delta_geo_sq - a.delta_geo_sq) // sorted by geometric delta squared
+    .sort((a, b) => Math.abs(b.delta_arith) - Math.abs(a.delta_arith)) // sorted by delta
     .slice(0, positions.length)
+    // .sort((a, b) => b.song_share - a.song_share) // sorted by delta
     // .reverse()
     .map((d, i) => {
       const radius = radiusScale(d.song_share); // sized by local popularity

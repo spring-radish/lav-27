@@ -2,13 +2,14 @@ import * as d3 from "d3";
 
 export function makeColorScheme(sortedData, column) {
   return d3
-    .scaleLinear()
+    .scaleLog()
     .domain(sortedData.map((d) => d[column]))
     .range(
       d3
         .quantize(
-          // d3.interpolateCubehelixDefault,
-          d3.interpolateCubehelixLong.gamma(0.5)("#a54886", "#fdfefc"),
+          (t) => d3.interpolateCubehelixDefault(0.48 + t / 2),
+          // d3.interpolateCubehelixLong.gamma(0.9)("#a54886", "#fdfefc"),
+          // d3.interpolateViridis,
           sortedData.length,
         )
         .reverse(),
