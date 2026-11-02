@@ -20,13 +20,8 @@ export function detectDot(mouseevent, nodes) {
 
 function roundPercentage(decimal, sign = false) {
     let string = (Math.round(decimal * 10000) / 100).toString();
-    // .split(".")
-    // .at(-1);
-    if (string.length === 3) string += "0";
-    // string = `.${string}`;
-    if (sign && decimal > 0) {
-        string = "+" + string;
-    }
+    if (string.split(".").at(-1).length === 1) string = string + "0";
+    if (sign && decimal > 0) string = "+" + string;
     return string;
 }
 
