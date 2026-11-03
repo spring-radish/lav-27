@@ -127,7 +127,7 @@ input[type="checkbox"] {
   cursor: pointer;
 
   &:checked {
-    background: light-dark(var(--lilac), var(--text));
+    background: var(--accent);
   }
 
   &:not(:checked):hover,
@@ -188,6 +188,10 @@ input[type="checkbox"] {
   display: grid;
   grid-template-columns: 1fr max-content;
   gap: 0 0.5em;
+  --accent: var(--lilac);
+  @media (prefers-color-scheme: dark) {
+    --accent: var(--text);
+  }
   label {
     white-space: nowrap;
     display: flex;
@@ -195,7 +199,7 @@ input[type="checkbox"] {
     &::after {
       content: "";
       display: block;
-      border-bottom: 1px solid light-dark(var(--lilac), var(--text));
+      border-bottom: 1px solid var(--accent);
       flex: 1 1 100%;
       translate: 0 -50%;
     }
