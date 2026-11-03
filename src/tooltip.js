@@ -29,6 +29,7 @@ function roundPercentage(decimal, sign = false) {
     let string = (Math.round(decimal * 10000) / 100).toString();
     if (string.split(".").at(-1).length === 1) string = string + "0";
     if (sign && decimal > 0) string = "+" + string;
+    if (sign && decimal < 0) string = string.replace("-", "−");
     return string;
 }
 
