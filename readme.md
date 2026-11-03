@@ -1,4 +1,4 @@
-<img src="https://github.com/spring-radish/lav-27/blob/main/public/preview.png" style="width: 75%; height: auto; display: block; margin-inline: auto;">
+<a href="https://lavender.midwestsacredharp.org/"><img src="https://github.com/spring-radish/lav-27/blob/main/public/preview.png" style="width: 75%; height: auto; display: block; margin-inline: auto;"></a>
 
 A website for 2027’s queer Sacred Harp gathering, to be held in Chicago. Currently in placeholder mode.
 
@@ -10,4 +10,4 @@ Let me know what you think?
 
 -Rosemary
 
-<a href="https://gossipsweb.net"><img src="https://gossipsweb.net/images/twwmwh-blue.jpg" alt="This website was made with hands." style="height: 43px; border: 1px solid #000;" /></a>
+<a href="https://gossipsweb.net"><img src="https://gossipsweb.net/images/twwmwh-blue.jpg" alt="This website was made with hands." style="height: 43px; border: 1px solid #000;"></a>
