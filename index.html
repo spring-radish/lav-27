@@ -9,7 +9,7 @@
     <title>Lavender Family Reunion and Convention 2027</title>
   </head>
   <body>
-    <canvas></canvas>
+    <canvas id="canvas"></canvas>
     <main>
       <h1>Lavender Family Reunion and Convention 2027</h1>
       <p>Organized by Queer Shapenote singers for our big extended family.</p>
@@ -26,8 +26,43 @@
         announced. General State Fair rules will apply.
       </p>
     </main>
+    <details>
+      <summary>?</summary>
+      <p>
+        These circles represent songs that are a lot more or a lot less
+        frequently sung in Illinois, compared to the rest of the Sacred Harp
+        world. The circle’s size indicates that song’s popularity in our host
+        state, while its colors show how much it’s sung (as a percentage of all
+        minuted lessons).
+      </p>
+      <figure>
+        <canvas id="legend"></canvas>
+        <span>← more rare</span>
+        <span>more popular →</span>
+      </figure>
+      <p>
+        The inner color is its global popularity, and the outer color is its
+        popularity in Illinois. A more colorful circle means a bigger difference
+        between them.
+      </p>
+      <p class="settings">
+        <label for="circles">Show circles</label>
+        <input type="checkbox" id="circles" checked />
+        <label for="stats">Show numbers</label>
+        <input type="checkbox" id="stats" />
+      </p>
+      <p>
+        <cite
+          ><a href="https://fivefiftyfour.com/minutes" target="_blank"
+            >Data source</a
+          >
+          covers minutes from 1995 to 2025</cite
+        >
+      </p>
+    </details>
+
     <footer>
-      Enter your email to be notified <br />when details are announced:
+      Enter your email to get notified <br />when details are announced:
       <form name="Lavender-Notification" method="POST" netlify>
         <input type="email" placeholder="iwatts74@harp.net" required />
         <input type="submit" value="Send" />

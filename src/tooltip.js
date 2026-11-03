@@ -3,6 +3,11 @@ import * as Elements from "./elements";
 let activeDot = undefined;
 
 export function detectDot(mouseevent, nodes) {
+    if (!Elements.circlesSetting.checked) {
+        activeDot = undefined;
+        render(activeDot);
+        return;
+    }
     const threshold = activeDot ? 20 : 10;
     const intersectingDot = nodes.find(
         ({ x, y, r }) =>
@@ -12,9 +17,11 @@ export function detectDot(mouseevent, nodes) {
             ) <
             r + threshold,
     );
+
     if (activeDot === intersectingDot) return;
     if (Elements.tooltip.matches(":hover, :focus")) return;
     activeDot = intersectingDot;
+    if (Elements.details.matches(":hover, :focus")) activeDot = undefined;
     render(activeDot);
 }
 
@@ -33,7 +40,8 @@ export function render(node) {
     }
 
     Elements.tooltip.innerHTML =
-        `<b>${node.page_num} ${node.title}</b> <span>%</span>` +
+        `<b>${node.page_num} ${node.title}</b>` +
+        `<span>%</span>` +
         `<label>Average</label> <span>${roundPercentage(node.global_song_share)}</span>` +
         `<label>Illinois</label> <span>${roundPercentage(node.song_share)}</span>` +
         `<label>Difference</label> <span>${roundPercentage(node.delta_arith, true)}</span>`;
@@ -55,6 +63,9 @@ export function render(node) {
                 : node.x + node.r + 10;
         ty = node.y - size.height / 2 - 5;
     }
+
+    tx = Math.max(10, tx);
+    ty = Math.max(10, ty);
 
     Elements.tooltip.style.setProperty("translate", `${tx}px ${ty}px`);
 }

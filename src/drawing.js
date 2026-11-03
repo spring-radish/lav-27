@@ -81,3 +81,22 @@ export function drawDots(canvas, { globeColor, localColor }, nodes) {
     context.fill();
   }
 }
+
+export function drawLegend(canvas, { localColor }) {
+  canvas.width = 200;
+  canvas.height = 10;
+
+  const context = canvas.getContext("2d");
+  const resolution = 2;
+
+  localColor
+    .ticks(canvas.width / resolution)
+    .reverse()
+    .forEach((t, i) => {
+      context.beginPath();
+      context.moveTo(i * resolution, 0);
+      context.rect(i * resolution, 0, resolution, canvas.height);
+      context.fillStyle = localColor(t);
+      context.fill();
+    });
+}

@@ -15,11 +15,17 @@ function init() {
   const nodes = Drawing.prepNodes(Data.il, positions, scales);
 
   Drawing.drawDots(Elements.canvas, scales, nodes);
+  Drawing.drawLegend(Elements.legend, scales);
 
   // Motion.animate(Drawing.drawDots, Elements.canvas, scales, nodes);
 
   window.addEventListener("mousemove", (e) => Tooltip.detectDot(e, nodes));
   window.addEventListener("pointerdown", (e) => Tooltip.detectDot(e, nodes));
+
+  window.addEventListener("pointerdown", (e) => {
+    if (Elements.details.matches(":hover")) return;
+    Elements.details.removeAttribute("open");
+  });
 }
 
 init();
