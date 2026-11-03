@@ -20,7 +20,10 @@ html {
 
   background: linear-gradient(var(--lavender) calc(100% - 100vh), var(--lilac));
   color: var(--text);
-  font: 100%/1.4 "Times";
+  font:
+    100%/1.4 "Times",
+    "Times New Roman",
+    serif;
 }
 
 body {
